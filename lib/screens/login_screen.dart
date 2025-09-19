@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -7,34 +8,57 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Top circular logo - white background
-              Container(
-                width: 50,
-                height: 50,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.rectangle,
-                )
+      body: Stack(
+        children: [
+          // Grey background image covering full screen
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/3adba8cf-3b9d-44d0-b813-3e3718723560.jpg'),
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 40),
-              // Center content
-              Expanded(
+            ),
+          ),
+
+          // Small logo3.png at top right - pushed higher
+          Positioned(
+            top: 20, // Pushed higher from 50 to 20
+            right: 20, // Small gap from right edge
+            child: SafeArea(
+              child: Image.asset(
+                'assets/logo3.png',
+                width: 40,
+                height: 40,
+              ),
+            ),
+          ),
+
+          // White rounded container
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.85,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // HoloBOX logo using asset - bigger
+                    const SizedBox(height: 40),
+
+                    // HoloBOX logo
                     Image.asset(
                       'assets/logo1.png',
                       height: 60,
                     ),
+
                     const SizedBox(height: 40),
+
                     // Log in title
                     const Text(
                       "Log in.",
@@ -44,7 +68,9 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
+
                     const SizedBox(height: 30),
+
                     // Email field
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,23 +86,25 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         TextField(
                           style: const TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: "ex: jon.smith@email.com",
-                            hintStyle: TextStyle(color: Colors.grey[500]),
+                            hintStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(color: Colors.grey),
                             ),
-                            focusedBorder: const UnderlineInputBorder(
+                            focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(color: Colors.grey),
                             ),
                           ),
                         ),
                       ],
                     ),
+
                     const SizedBox(height: 20),
+
                     // Password field
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,24 +121,26 @@ class LoginScreen extends StatelessWidget {
                         TextField(
                           obscureText: true,
                           style: const TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: "********",
-                            hintStyle: TextStyle(color: Colors.grey[500]),
+                            hintStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(color: Colors.grey),
                             ),
-                            focusedBorder: const UnderlineInputBorder(
+                            focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(color: Colors.grey),
                             ),
                           ),
                         ),
                       ],
                     ),
+
                     const SizedBox(height: 40),
-                    // Login button
+
+                    // LOGIN button
                     SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -123,7 +153,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         onPressed: () {},
                         child: const Text(
-                          "LOGIN",
+                          "LOG IN",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -132,81 +162,83 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 30),
-                    // Or text
+
+                    // "or" text
                     const Text(
                       "or",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
                     ),
+
                     const SizedBox(height: 20),
-                    // Social buttons
+
+                    // Social media buttons with dark gray theme
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _socialButton("G", Colors.red),
+                        _socialIconButton(FontAwesomeIcons.google, Colors.grey[700]!),
                         const SizedBox(width: 20),
-                        _socialButton("f", Colors.blue),
+                        _socialIconButton(FontAwesomeIcons.facebook, Colors.grey[700]!),
                         const SizedBox(width: 20),
-                        _socialButton("🐦", Colors.lightBlue),
+                        _socialIconButton(FontAwesomeIcons.twitter, Colors.grey[700]!),
                       ],
                     ),
+
+                    const Spacer(),
+
+                    // Sign up link
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text.rich(
+                        TextSpan(
+                          text: "Don't have an account? ",
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          children: [
+                            TextSpan(
+                              text: "SIGN UP",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
-              // Sign up link
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const SignupScreen()),
-                    );
-                  },
-                  child: const Text.rich(
-                    TextSpan(
-                      text: "Don't have an account? ",
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
-                      children: [
-                        TextSpan(
-                          text: "SIGN UP",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 
-  Widget _socialButton(String label, Color color) {
+  Widget _socialIconButton(IconData icon, Color color) {
     return Container(
       width: 50,
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: Colors.grey[200],
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.grey[300]!),
+        border: Border.all(color: Colors.grey[400]!, width: 1),
       ),
       child: Center(
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: color,
-          ),
+        child: FaIcon(
+          icon,
+          size: 20,
+          color: color, // Now using dark gray instead of brand colors
         ),
       ),
     );
