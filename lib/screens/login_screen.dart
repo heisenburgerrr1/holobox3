@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'signup_screen.dart';
+import 'onboarding_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -169,7 +170,15 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navigate to onboarding screens after login
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const OnboardingScreen(),
+                            ),
+                          );
+                        },
                         child: const Text(
                           "LOG IN",
                           style: TextStyle(
