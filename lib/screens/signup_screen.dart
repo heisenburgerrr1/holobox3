@@ -26,9 +26,27 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
 
+          // Back button at top left - aligned with logo
+          Positioned(
+            top: 16, // Same as logo
+            left: 20, // Same gap as logo on right
+            child: SafeArea(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                  size: 24,
+                ),
+              ),
+            ),
+          ),
+
           // Small logo3.png at top right - same as login screen
           Positioned(
-            top: 15,
+            top: 7,
             right: 20,
             child: SafeArea(
               child: Image.asset(

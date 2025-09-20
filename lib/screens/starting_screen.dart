@@ -49,7 +49,7 @@ class GetStartedScreen extends StatelessWidget {
                 const Spacer(flex: 6), // More space above text
 
                 // Main text - positioned closer to button
-                 Text(
+                Text(
                   "FUTURE OF",
                   style: GoogleFonts.montserrat(
                     fontSize: 32,

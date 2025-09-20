@@ -20,9 +20,27 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
 
+          // Back button at top left - aligned with logo
+          Positioned(
+            top: 28, // Same as logo
+            left: 20, // Same gap as logo on right
+            child: SafeArea(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                  size: 22,
+                ),
+              ),
+            ),
+          ),
+
           // Small logo3.png at top right - pushed higher
           Positioned(
-            top: 20, // Pushed higher from 50 to 20
+            top: 19, // Pushed higher from 50 to 20
             right: 20, // Small gap from right edge
             child: SafeArea(
               child: Image.asset(
