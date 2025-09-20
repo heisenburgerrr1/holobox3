@@ -25,7 +25,7 @@ class GetStartedScreen extends StatelessWidget {
                 // Centered circular logo using logo3
                 Center(
                   child: Image.asset(
-                    'assets/logo3.png',
+                    'assets/logo4.png',
                     width: 150,
                     height: 150,
                   ),
@@ -36,7 +36,7 @@ class GetStartedScreen extends StatelessWidget {
                   offset: const Offset(0, -55),
                   child: Center(
                     child: Image.asset(
-                      'assets/logo1.png',
+                      'assets/logo6.png',
                       height: 80,
                     ),
                   ),
