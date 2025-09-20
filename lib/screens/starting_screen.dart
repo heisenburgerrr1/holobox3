@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'login_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -25,9 +27,9 @@ class GetStartedScreen extends StatelessWidget {
                 // Centered circular logo using logo3
                 Center(
                   child: Image.asset(
-                    'assets/logo4.png',
-                    width: 150,
-                    height: 150,
+                    'assets/logo3.png',
+                    width: 160,
+                    height: 160,
                   ),
                 ),
 
@@ -36,29 +38,30 @@ class GetStartedScreen extends StatelessWidget {
                   offset: const Offset(0, -55),
                   child: Center(
                     child: Image.asset(
-                      'assets/logo6.png',
-                      height: 80,
+                      'assets/logo1.png',
+                      height: 70,
+                      width: 400,
                     ),
                   ),
                 ),
 
                 // Large spacer to push text toward bottom
-                const Spacer(flex: 3), // More space above text
+                const Spacer(flex: 6), // More space above text
 
                 // Main text - positioned closer to button
-                const Text(
+                 Text(
                   "FUTURE OF",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     fontSize: 32,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 2,
                     color: Colors.black,
                   ),
                 ),
-                const Text(
+                Text(
                   "ADVERTISEMENTS",
-                  style: TextStyle(
-                    fontSize: 32,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 34,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
                     color: Colors.black,
